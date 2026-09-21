@@ -1,0 +1,1 @@
+Tells you when a new version of Rebind or an Ink app is ready.

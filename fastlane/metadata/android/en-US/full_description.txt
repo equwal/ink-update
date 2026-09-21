@@ -1,0 +1,28 @@
+Ink Update watches Rebind and its extensions. When a new version is ready, it
+makes a notification.
+
+The app does not install anything. It finds the new version and opens the page.
+You install it.
+
+Rebind has no internet permission. This app has it, so Rebind does not need it.
+You can remove Ink Update at any time, and Rebind keeps working.
+
+It watches Rebind, Ink Recents, Ink Dim and Ink Update. It shows only the ones
+that are on your device.
+
+It looks in three places, in this order. First F-Droid: if F-Droid has a newer
+build, the app opens the F-Droid page. Then Google Play: if Google Play
+installed the app, Google Play updates it, and Ink Update stops there. Then
+GitHub: the app reads the last ten releases and takes the newest one that is
+not a draft.
+
+Tap "Check now" to look. Turn on "Check once a day" for a daily check that
+lives through a restart.
+
+The app sends no identifier, no account, no advertisement and no analytics. It
+contacts two hosts, f-droid.org and api.github.com. Each one sees your IP
+address and the name of the package or the repository, and nothing else.
+
+Made for the Viwoods AiPaper readers.
+
+Free software, GPL-3.0-or-later.

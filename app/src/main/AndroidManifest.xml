@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Ink Update holds the internet permission so that the apps it watches do
+        not need it. Rebind has no internet permission, and it keeps none.
+    -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- A persisted job needs this permission. The app has no receiver. -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!--
+        From Android 11 an app sees only the packages it names. The app must see
+        the apps it watches, to read the installed version, and the two stores,
+        to open a page in them.
+    -->
+    <queries>
+        <package android:name="dev.equwal.assistkey" />
+        <package android:name="dev.equwal.inkrecents" />
+        <package android:name="dev.equwal.inkdim" />
+        <package android:name="dev.equwal.inkupdate" />
+        <package android:name="org.fdroid.fdroid" />
+        <package android:name="com.android.vending" />
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.App">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!-- For Rebind, or any other app that asks for a check. -->
+            <intent-filter>
+                <action android:name="dev.equwal.inkupdate.CHECK" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- The daily check. The system starts it. -->
+        <service
+            android:name=".CheckJob"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+    </application>
+
+</manifest>

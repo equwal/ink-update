@@ -1,0 +1,23 @@
+# Build output
+build/
+.gradle/
+.kotlin/
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# Local machine configuration
+local.properties
+build.ps1
+
+# Signing material. The keystore and its passwords never go in the repository.
+*.jks
+*.keystore
+keystore.properties
+
+# Editors
+.idea/
+*.iml
+.vscode/
+.DS_Store

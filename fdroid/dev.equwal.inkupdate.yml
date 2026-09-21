@@ -1,0 +1,27 @@
+Categories:
+  - System
+License: GPL-3.0-or-later
+AuthorName: equwal
+AuthorEmail: truex@equwal.com
+SourceCode: https://github.com/equwal/ink-update
+IssueTracker: https://github.com/equwal/ink-update/issues
+Changelog: https://github.com/equwal/ink-update/blob/main/CHANGELOG.md
+Donate: https://ko-fi.com/truex
+
+AutoName: Ink Update
+
+RepoType: git
+Repo: https://github.com/equwal/ink-update.git
+
+Builds:
+  - versionName: 0.1.0
+    versionCode: 1
+    commit: v0.1.0
+    subdir: app
+    gradle:
+      - yes
+
+AutoUpdateMode: Version
+UpdateCheckMode: Tags
+CurrentVersion: 0.1.0
+CurrentVersionCode: 1

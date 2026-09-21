@@ -1,0 +1,6 @@
+First release.
+
+Watches Rebind, Ink Recents, Ink Dim and Ink Update, and makes a notification
+when a new version is ready. It looks in F-Droid, then Google Play, then
+GitHub. A daily check lives through a restart. The intent action
+dev.equwal.inkupdate.CHECK starts a check.

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        E-ink: light, high contrast, no animation anywhere. No action bar:
+        the screen draws its own title. From Android 15 an app that targets
+        SDK 35 or later is laid out edge to edge, so the screen pads itself
+        for the system bars.
+    -->
+    <style name="Theme.App" parent="@android:style/Theme.DeviceDefault.Light.NoActionBar">
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:statusBarColor">@android:color/white</item>
+        <item name="android:navigationBarColor">@android:color/white</item>
+    </style>
+</resources>

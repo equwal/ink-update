@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ink Update</string>
+    <string name="channel_updates">Updates</string>
+
+    <!-- The screen -->
+    <string name="none_installed">No watched app is on this device.</string>
+    <string name="check_now">Check now</string>
+    <string name="checking">Checking</string>
+    <string name="daily">Check once a day</string>
+    <string name="on">On</string>
+    <string name="off">Off</string>
+    <string name="notifications">Notifications</string>
+
+    <!-- The state of one app -->
+    <string name="up_to_date">Up to date</string>
+    <string name="update_to">Update: %1$s</string>
+    <string name="play_updates">Play updates this app</string>
+    <string name="no_answer">Could not check</string>
+
+    <!-- The time of the last check -->
+    <string name="never_checked">Not checked yet.</string>
+    <string name="checked">Checked %1$s.</string>
+    <string name="could_not_check">Could not check %1$s.</string>
+
+    <!-- About -->
+    <string name="about">About</string>
+    <string name="version">Version</string>
+    <string name="licence">Licence</string>
+    <string name="source_code">Source code</string>
+    <string name="coffee">Buy me a coffee</string>
+</resources>
