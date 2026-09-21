@@ -23,6 +23,6 @@ The app sends no identifier, no account, no advertisement and no analytics. It
 contacts two hosts, f-droid.org and api.github.com. Each one sees your IP
 address and the name of the package or the repository, and nothing else.
 
-Made for the Viwoods AiPaper readers.
+Made for e-ink readers and any Android 12 or later.
 
 Free software, GPL-3.0-or-later.
