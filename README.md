@@ -9,7 +9,11 @@ Made for e-ink readers and any Android 12 or later.
 
 ## Screenshots
 
-To be added.
+<p>
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="260" alt="The list of the watched apps, each up to date, and the Check now button">
+</p>
+
+The picture is from a Viwoods AiPaper Reader.
 
 ## Why this is a separate app
 
