@@ -1,0 +1,1 @@
+The APK is smaller: R8 removes the code that the app does not use.

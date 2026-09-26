@@ -25,8 +25,8 @@ android {
         applicationId = "dev.equwal.inkupdate"
         minSdk = 31
         targetSdk = 36
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 2
+        versionName = "0.1.1"
     }
 
     signingConfigs {
@@ -42,8 +42,10 @@ android {
 
     buildTypes {
         release {
-            // No shrinking: the app is small, and R8 adds nothing here.
-            isMinifyEnabled = false
+            // R8 removes unused code and resources. F-Droid asks for it.
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"))
             if (hasSigning) signingConfig = signingConfigs.getByName("release")
         }
         debug {

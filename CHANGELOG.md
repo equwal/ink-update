@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1
+
+- The APK is smaller: R8 removes the code that the app does not use.
+
 ## 0.1.0
 
 First release.
