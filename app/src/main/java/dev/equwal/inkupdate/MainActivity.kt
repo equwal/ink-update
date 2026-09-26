@@ -94,6 +94,11 @@ class MainActivity : Activity() {
         col.row(title = getString(R.string.licence), subtitle = "GPL-3.0-or-later")
         col.row(title = getString(R.string.source_code)) { open(SOURCE) }
         col.row(title = getString(R.string.coffee)) { open(KOFI) }
+
+        col.header(getString(R.string.more_apps))
+        for (app in MORE_APPS) {
+            col.row(title = getString(app.name), subtitle = getString(app.line)) { open(app.url) }
+        }
     }
 
     /** One watched app: what is installed, and what the check found. */
