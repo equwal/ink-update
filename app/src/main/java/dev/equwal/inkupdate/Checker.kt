@@ -94,7 +94,8 @@ object Checker {
         // Two cases make the GitHub request waste: F-Droid already has a newer
         // build, and the Play store updates the app by itself.
         val github =
-            if (fdroidWins || app.installer == Decide.PLAY_PACKAGE) GithubAnswer.None
+            if (fdroidWins || app.installer == Decide.PLAY_PACKAGE ||
+                Decide.fromFdroidClient(app.installer)) GithubAnswer.None
             else askGithub(w)
 
         return Decide.source(

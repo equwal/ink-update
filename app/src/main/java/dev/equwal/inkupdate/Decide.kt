@@ -77,13 +77,20 @@ object Decide {
     /** The package name of the Play store client. */
     const val PLAY_PACKAGE = "com.android.vending"
 
+    /** F-Droid and its common clients. They update the app themselves. */
+    val FDROID_CLIENTS = setOf("org.fdroid.fdroid", "org.fdroid.basic", "com.machiav3lli.fdroid")
+
+    fun fromFdroidClient(installer: String?): Boolean = installer in FDROID_CLIENTS
+
     /**
      * Where the update comes from. The order is F-Droid, Google Play, GitHub.
      *
      * 1. F-Droid holds a newer build: take it. The F-Droid client updates the
      *    app by itself after the person opens the page once.
      * 2. The Play store installed the app: the Play store updates it. Stop.
-     * 3. GitHub holds a newer release: take it.
+     * 3. A F-Droid client installed the app: it updates the app. Stop. F-Droid
+     *    builds lag behind GitHub, and the app must not offer a sideload then.
+     * 4. GitHub holds a newer release: take it.
      *
      * @param installer the package that installed the app, from the system.
      */
@@ -98,6 +105,7 @@ object Decide {
             return Result.Update(FDROID, fdroid.versionName, fdroid.page, null)
         }
         if (installer == PLAY_PACKAGE) return Result.LeftToPlay
+        if (fromFdroidClient(installer)) return Result.UpToDate
 
         if (github is GithubAnswer.Found) {
             val theirs = Version.parse(github.tag)

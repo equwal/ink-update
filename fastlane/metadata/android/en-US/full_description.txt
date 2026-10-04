@@ -16,8 +16,11 @@ installed the app, Google Play updates it, and Ink Update stops there. Then
 GitHub: the app reads the last ten releases and takes the newest one that is
 not a draft.
 
-Tap "Check now" to look. Turn on "Check once a day" for a daily check that
-lives through a restart.
+If an F-Droid client installed the app, Ink Update stops after the F-Droid
+answer and never offers a GitHub download.
+
+The app checks once when you first open it. Tap "Check now" to look again.
+The daily check is on by default. Turn off "Check once a day" to stop it.
 
 The app sends no identifier, no account, no advertisement and no analytics. It
 contacts two hosts, f-droid.org and api.github.com. Each one sees your IP

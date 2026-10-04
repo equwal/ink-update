@@ -50,6 +50,14 @@ class DecideTest {
         assertEquals(Result.LeftToPlay, r)
     }
 
+    @Test
+    fun fdroidClientInstallNeverOffersGithub() {
+        val r = Decide.source(
+            "org.fdroid.fdroid", FdroidAnswer.NotThere, githubNewer(), 1L, "0.1.0"
+        )
+        assertEquals(Result.UpToDate, r)
+    }
+
     /** The Play store does not beat a newer build on F-Droid. */
     @Test
     fun fdroidStillWinsOverPlay() {
