@@ -24,6 +24,11 @@
         <package android:name="dev.equwal.inkupdate" />
         <package android:name="org.fdroid.fdroid" />
         <package android:name="com.android.vending" />
+        <!-- Every F-Droid client opens these links. -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="fdroidrepos" />
+        </intent>
     </queries>
 
     <application

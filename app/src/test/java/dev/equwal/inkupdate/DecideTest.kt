@@ -58,6 +58,16 @@ class DecideTest {
         assertEquals(Result.UpToDate, r)
     }
 
+    /** A client that is not in the list, found by its fdroidrepos:// links. */
+    @Test
+    fun otherFdroidClientInstallNeverOffersGithub() {
+        val r = Decide.source(
+            "com.looker.droidify", FdroidAnswer.NotThere, githubNewer(), 1L, "0.1.0",
+            byFdroid = true
+        )
+        assertEquals(Result.UpToDate, r)
+    }
+
     /** The Play store does not beat a newer build on F-Droid. */
     @Test
     fun fdroidStillWinsOverPlay() {

@@ -93,19 +93,22 @@ object Decide {
      * 4. GitHub holds a newer release: take it.
      *
      * @param installer the package that installed the app, from the system.
+     * @param byFdroid the installer is a F-Droid client. Checker also asks the
+     *    system whether the installer opens fdroidrepos:// links.
      */
     fun source(
         installer: String?,
         fdroid: FdroidAnswer,
         github: GithubAnswer,
         installedCode: Long,
-        installedName: String
+        installedName: String,
+        byFdroid: Boolean = fromFdroidClient(installer)
     ): Result {
         if (fdroid is FdroidAnswer.Found && fdroid.versionCode > installedCode) {
             return Result.Update(FDROID, fdroid.versionName, fdroid.page, null)
         }
         if (installer == PLAY_PACKAGE) return Result.LeftToPlay
-        if (fromFdroidClient(installer)) return Result.UpToDate
+        if (byFdroid) return Result.UpToDate
 
         if (github is GithubAnswer.Found) {
             val theirs = Version.parse(github.tag)

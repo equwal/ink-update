@@ -3,7 +3,9 @@
 package dev.equwal.inkupdate
 
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 
 /**
  * The check itself: what is installed, what the two hosts say, and what that
@@ -21,7 +23,8 @@ object Checker {
         val watched: Watched,
         val versionName: String,
         val versionCode: Long,
-        val installer: String?
+        val installer: String?,
+        val byFdroid: Boolean = Decide.fromFdroidClient(installer)
     )
 
     /** A row of the screen: an installed app and what the last check found. */
@@ -39,12 +42,14 @@ object Checker {
             } catch (e: Exception) {
                 null
             } ?: continue
+            val installer = installerOf(pm, w.pkg)
             out.add(
                 Installed(
                     watched = w,
                     versionName = info.versionName ?: "",
                     versionCode = info.longVersionCode,
-                    installer = installerOf(pm, w.pkg)
+                    installer = installer,
+                    byFdroid = fdroidClient(pm, installer)
                 )
             )
         }
@@ -94,12 +99,11 @@ object Checker {
         // Two cases make the GitHub request waste: F-Droid already has a newer
         // build, and the Play store updates the app by itself.
         val github =
-            if (fdroidWins || app.installer == Decide.PLAY_PACKAGE ||
-                Decide.fromFdroidClient(app.installer)) GithubAnswer.None
+            if (fdroidWins || app.installer == Decide.PLAY_PACKAGE || app.byFdroid) GithubAnswer.None
             else askGithub(w)
 
         return Decide.source(
-            app.installer, fdroid, github, app.versionCode, app.versionName
+            app.installer, fdroid, github, app.versionCode, app.versionName, app.byFdroid
         )
     }
 
@@ -122,6 +126,22 @@ object Checker {
             a.code == 403 || a.code == 429 -> GithubAnswer.Failed("Too many requests")
             a.code !in 200..299 -> GithubAnswer.Failed("GitHub said " + a.code)
             else -> Decide.parseGithub(a.body, w.preferAsset)
+        }
+    }
+
+    /**
+     * True when the installer is a F-Droid client. There are many clients, and
+     * each one opens fdroidrepos:// links, so the system can tell.
+     */
+    private fun fdroidClient(pm: PackageManager, installer: String?): Boolean {
+        if (installer == null) return false
+        if (Decide.fromFdroidClient(installer)) return true
+        val view = Intent(Intent.ACTION_VIEW, Uri.parse("fdroidrepos://f-droid.org/repo"))
+            .setPackage(installer)
+        return try {
+            pm.queryIntentActivities(view, 0).isNotEmpty()
+        } catch (e: Exception) {
+            false
         }
     }
 
