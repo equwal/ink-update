@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.2
+
+- An app that a F-Droid client installed gets its updates from that client.
+  Ink Update no longer offers a GitHub download for it.
+- Rebind is checked on F-Droid.
+- The description names the check at the first start and the daily check.
+
 ## 0.1.1
 
 - The APK is smaller: R8 removes the code that the app does not use.
