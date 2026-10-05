@@ -44,8 +44,8 @@ object Watch {
             title = "Rebind",
             pkg = "dev.equwal.assistkey",
             fdroidId = "dev.equwal.assistkey",
-            repo = "equwal/rebind",
-            preferAsset = "full"
+            repo = "equwal/assistkey",
+            preferAsset = "fdroid"
         ),
         Watched(
             title = "Ink Recents",

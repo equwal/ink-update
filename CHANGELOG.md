@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.3
+
+- Rebind is checked against its source repository, equwal/assistkey. The
+  GitHub download is the F-Droid flavour, not the Play flavour.
+
 ## 0.1.2
 
 - An app that a F-Droid client installed gets its updates from that client.

@@ -1,0 +1,1 @@
+Rebind is checked against its source repository, equwal/assistkey, and the GitHub download is the F-Droid flavour.
